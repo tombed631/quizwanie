@@ -1,0 +1,7 @@
+<div class="application">
+    <div class="application__content">
+        <div class="game__item button--game" (click)="this.chooseOpponent(user)" *ngFor="let user of allOpponents">
+            {{user.displayName}} ( {{ user.wins }}) 
+        </div>
+      </div>
+ </div>

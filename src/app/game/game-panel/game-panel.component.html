@@ -1,0 +1,93 @@
+<div class="application">
+    <div class="application__content">
+        <div class="game">
+            <div class="game__row">
+                <div class="game__item">
+                    <div class="player">
+                        <div class="player__avatar">
+                            <img src="https://api.adorable.io/avatars/100/abott@aa.png">
+                        </div>
+                        <div class="player__name">{{actualGameUser.displayName}}</div>
+                    </div>
+                </div>
+                <div class="game__item">
+                    <div class="score">{{actualGameUser.points}} : {{actualGameOpponent.points}}</div>
+                    <div class="score--info" *ngIf="endGameText.length>0">{{endGameText}}</div>
+
+                </div>
+                <div class="game__item">
+                    <div class="player">
+                        <div class="player__avatar">
+                            <img src="https://api.adorable.io/avatars/100/abott@sss.png">
+                        </div>
+                        <div class="player__name">{{actualGameOpponent.displayName}}</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="game__row game__row--cover" *ngFor="let categoryRound of categoryRounds; let i = index">
+                <div class="game__item game__item--full">
+                    <div class="game__points" *ngIf = "!isPlayButton">
+                        <div class="game__point" *ngIf = "gameUserLastAnswers[3*i].state==1"></div>
+                        <div class="game__point game__point--wrong" *ngIf = "gameUserLastAnswers[3*i].state==-1"></div>
+                        <div class="game__point game__point--none" *ngIf = "gameUserLastAnswers[3*i].state==0"></div>
+                        <div class="game__point" *ngIf = "gameUserLastAnswers[3*i + 1].state==1"></div>
+                        <div class="game__point game__point--wrong" *ngIf = "gameUserLastAnswers[3*i + 1].state==-1"></div>
+                        <div class="game__point game__point--none" *ngIf = "gameUserLastAnswers[3*i + 1].state==0"></div>
+                         <div class="game__point" *ngIf = "gameUserLastAnswers[3*i + 2].state==1"></div>
+                        <div class="game__point game__point--wrong" *ngIf = "gameUserLastAnswers[3*i + 2].state==-1"></div>
+                        <div class="game__point game__point--none" *ngIf = "gameUserLastAnswers[3*i + 2].state==0"></div>
+                    </div>
+                    <div class="game--turn" *ngIf = "isPlayButton">
+                        <div>TWOJA KOLEJ</div>
+                    </div>
+                </div>
+                <div class="game__item game__item--short">
+                    <div class="game__round">Runda {{i+1}}</div>
+                    <div class="game__category">          
+                         {{categoryRound.categoryName}}
+                    </div>
+                </div>
+                <div class="game__item game__item--full">
+                    <div class="game__points">
+                       <div class="game__points">
+                        <div class="game__point" *ngIf = "gameOpponentLastAnswers[3*i].state==1"></div>
+                        <div class="game__point game__point--wrong" *ngIf = "gameOpponentLastAnswers[3*i].state==-1"></div>
+                        <div class="game__point game__point--none" *ngIf = "gameOpponentLastAnswers[3*i].state==0"></div>
+                        <div class="game__point" *ngIf = "gameOpponentLastAnswers[3*i + 1].state==1"></div>
+                        <div class="game__point game__point--wrong" *ngIf = "gameOpponentLastAnswers[3*i + 1].state==-1"></div>
+                        <div class="game__point game__point--none" *ngIf = "gameOpponentLastAnswers[3*i + 1].state==0"></div>
+                         <div class="game__point" *ngIf = "gameOpponentLastAnswers[3*i + 2].state==1"></div>
+                        <div class="game__point game__point--wrong" *ngIf = "gameOpponentLastAnswers[3*i + 2].state==-1"></div>
+                        <div class="game__point game__point--none" *ngIf = "gameOpponentLastAnswers[3*i + 2].state==0"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game__row">
+                    <div class="game__item" *ngIf = "isChooseCategoryButton">
+                            <button class="button button--warning button--big"  (click)="chooseCategory()">Wybierz kategorię</button>
+                    </div>
+            </div>
+            
+            <div class="game__row">
+                
+                <div class="game__item" *ngIf = "isPlayButton">
+                    <button class="button button--success button--big" (click)="play()">GRAJ</button>
+                </div>
+              
+                <div class="game__item" *ngIf = "!game.isFinished">
+                    <button class="button button--danger"  (click)="surrender()">Poddaj się</button>
+                </div>
+            </div>
+          
+            <div class="game__row">
+                <div class="game__item">
+                    <div class="button--back"  (click)="back()">Powrót</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

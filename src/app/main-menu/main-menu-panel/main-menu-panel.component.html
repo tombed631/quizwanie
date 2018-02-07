@@ -1,0 +1,133 @@
+<!-- <p>
+  main-menu-panel works!
+</p>
+<button [routerLink]="['/categories']">Nowa gra</button> -->
+
+ <!-- przykladowe -->
+<!-- game category:
+<div *ngFor="let game of games | async">
+   {{game.category}}
+</div>
+
+<button style="height: 50px; width: 100px"
+    (click)="this.pushData()">DODAJ
+</button> -->
+<!-- koniec przykladu -->
+<div id="navbar" class="navbar-collapse collapse">
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="" (click)="authService.logout()">Logout</a></li>
+  </ul>
+</div>
+<div class="application">
+    <div class="application__content">
+        <div class="game">
+          <div class="game__row">
+            <div class="game__item">
+              <div class="player__avatar">
+                <img src="https://api.adorable.io/avatars/100/abott@aa.png">
+              </div>
+            </div>
+            <div class="game__item game__item--big">
+              Twoja nazwa użytkownika:
+              <div class="player__name">{{actualUser.displayName}}</div>
+            </div>
+            <div class= "game__item"></div>
+          </div>
+          <div class="game__row">
+            <button class="button button--full button--play"
+            (click) = "newGameStart()"
+            >
+              Nowa gra
+            </button>
+          </div>
+          <div class="header">
+            <div class="header__item">
+              <div class="header__menu">
+                Aktualne gry
+              </div>
+            </div>
+          </div>
+          <div class="game__row" *ngFor="let game of activeUserGames"  (click)="this.loadGame(game)">
+
+            <button class="button button--full button--current">
+              <div class="game__item game__item--fit">
+                <div class="player__avatar player__avatar--small">
+                  <img src="https://api.adorable.io/avatars/100/abott@asa.png">
+                </div>
+              </div>
+              <div class="game__item">
+                <div class="game__current">
+                 <div *ngIf="game.user2.displayName == actualUser.displayName " >
+                   {{game.user1.displayName}}
+                 </div>
+                 <div *ngIf="game.user1.displayName == actualUser.displayName " >
+                   {{game.user2.displayName}}
+                 </div>
+                  <div class="game__current--small">
+                     {{game.user1.displayName}} {{game.user1.points}} : {{game.user2.points}} {{game.user2.displayName}}
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <div class="header">
+            <div class="header__item">
+              <div class="header__menu">
+                Zakończone gry
+              </div>
+            </div>
+            <div class="header__item">
+              <button class="button__img" (click)="this.removeFinishedGames()"><img src="assets/error.png"/></button>
+            </div>
+          </div>
+          <div class="game__row" *ngFor="let game of finishedUserGames"  (click)="this.loadGame(game)">
+            <button class="button button--full button--game">
+              <div class="game__item game__item--fit">
+                <div class="player__avatar player__avatar--small">
+                  <img src="https://api.adorable.io/avatars/100/abott@asa.png">
+                </div>
+              </div>
+              <div class="game__item">
+                <div *ngIf="game.user1.displayName == actualUser.displayName && game.whoWinGame == game.user1.displayName">
+                Wygrana
+                  <div class="game__opponent">
+                    z {{game.user2.displayName}}
+                  </div>
+                </div>
+                <div *ngIf="game.user1.displayName == actualUser.displayName && game.whoWinGame == game.user2.displayName">
+                Przegrana
+                  <div class="game__opponent">
+                    z {{game.user2.displayName}}
+                  </div>
+                </div>
+                <div *ngIf="game.user2.displayName == actualUser.displayName && game.whoWinGame == game.user2.displayName">
+                Wygrana
+                  <div class="game__opponent">
+                    z {{game.user1.displayName}}
+                  </div>
+                </div>
+                <div *ngIf="game.user2.displayName == actualUser.displayName && game.whoWinGame == game.user1.displayName">
+                Przegrana
+                  <div class="game__opponent">
+                    z {{game.user1.displayName}}
+                  </div>
+                </div>
+                <div *ngIf="game.user1.displayName == actualUser.displayName && game.whoWinGame == 'draw'">
+                Remis
+                  <div class="game__opponent">
+                    z {{game.user2.displayName}}
+                  </div>
+                </div>
+                <div *ngIf="game.user2.displayName == actualUser.displayName && game.whoWinGame == 'draw'">
+                Remis
+                  <div class="game__opponent">
+                    z {{game.user1.displayName}}
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>

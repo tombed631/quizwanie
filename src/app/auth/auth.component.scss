@@ -1,0 +1,27 @@
+.application {
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+    background-color: #6facde;
+    color: white;
+	background: repeating-linear-gradient(
+		-55deg, 
+	rgba(111, 175, 222, 1), 
+	rgba(111, 175, 222, 1) 10px, 
+	rgba(111, 175, 222, 0.9) 10px,
+	rgba(111, 175, 222, 0.9) 20px);
+}
+
+.error { 
+	text-align: center;
+    color: red;
+}
+
+.container-box {
+	display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}

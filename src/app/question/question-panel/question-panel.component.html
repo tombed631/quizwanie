@@ -1,0 +1,60 @@
+<div class="application">
+		<div class="application__content" >
+			<div class="header">
+				<div class="chances-container ">
+					<div class="chance chance--wrong" *ngIf="gameUserLastAnswers[3*(roundNumber-1)].state==-1"></div>
+					<div class="chance chance--success" *ngIf="gameUserLastAnswers[3*(roundNumber-1)].state==1" ></div>
+					<div class="chance" *ngIf="gameUserLastAnswers[3*(roundNumber-1)].state==0"></div>
+					<div class="chance chance--wrong" *ngIf="gameUserLastAnswers[3*(roundNumber-1)+1].state==-1"></div>
+					<div class="chance chance--success" *ngIf="gameUserLastAnswers[3*(roundNumber-1)+1].state==1"></div>
+					<div class="chance" *ngIf="gameUserLastAnswers[3*(roundNumber-1)+1].state==0"></div>
+						<div class="chance chance--wrong" *ngIf="gameUserLastAnswers[3*(roundNumber-1)+2].state==-1"></div>
+					<div class="chance chance--success" *ngIf="gameUserLastAnswers[3*(roundNumber-1)+2].state==1"></div>
+					<div class="chance" *ngIf="gameUserLastAnswers[3*(roundNumber-1)+2].state==0"></div>
+				</div>
+				<div class="game-details">
+					Twój pojedynek przeciwko: {{actualGameOpponent.displayName}}
+				</div>
+			</div>
+			<div class="question" *ngIf = "isStart">
+				<div class="question__category">
+					{{categoryName}}
+				</div>
+					{{question.tresc}}
+			</div>
+			<div class="question" *ngIf = "!isStart && questionNumber<=2" (click) = "newQuestion()">
+				<div class="question__category">
+					{{categoryName}}
+				</div>
+					Kliknij i zobacz kolejne pytanie!
+			</div>
+			<div class="question" *ngIf = "questionNumber>2" (click) = "back()">
+				<div class="question__category">
+					{{categoryName}}
+				</div>
+					Koniec naciśnij by powrócić!
+			</div>
+			
+
+			<div class="answer-container">
+				<ng-container *ngFor="let ans of answers; let i = index">
+
+					<button (click)="answer(i)" class="answer" id="a{{i}}">
+						{{ans.tresc}}
+					</button>
+				</ng-container>
+			
+			</div>
+			<div class="progress">
+				
+			  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" id="progressBar"
+			  aria-valuemin="0" aria-valuemax="100" style="width:100%">
+			  
+			  </div>
+			</div>
+
+	
+		</div>
+
+		<!-- <p>{{goodOrBadAnswerText}}</p> -->
+    </div>

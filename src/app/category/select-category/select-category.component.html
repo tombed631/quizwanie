@@ -1,0 +1,18 @@
+<!-- <div class="container">
+  <div class="row" *ngIf="categoryError==false && opponent != null && opponent.id != null; else error">
+    <label >{{opponent.id}}</label>
+
+      <button *ngFor="let category of categories ">
+          ; let i=index {{i}} {{category?.name}}
+        </button>
+      </div>
+    <ng-template #error>ERROR</ng-template>
+</div> -->
+
+<div class="application">
+    <div class="application__content">
+        <button class="circle" (click)="this.chooseCategory(category)" *ngFor="let category of filterCategories">
+            {{category.name}} 
+        </button>
+      </div>
+</div>
